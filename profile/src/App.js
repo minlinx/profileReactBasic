@@ -1,10 +1,16 @@
 import './App.css';
-
+const putSomething = { 
+    mineral : 'Lithium Ore',
+    level: "beginner",
+    color: "#2662EA",
+    playing: 'checkers',
+    watchin: 'sadhguru'
+  };
 const skills = [
   {
     skill: "HTML+CSS",
     level: "beginner",
-    color: "#2662EA"
+    color: "#2662EA",
   },
   {
     skill: "JavaScript",
@@ -25,7 +31,8 @@ const skills = [
     skill: "React",
     level: "beginner",
     color: "#60DAFB"
-  }
+  },
+  putSomething
 ];
 
 function App() {
@@ -50,7 +57,7 @@ function Avatar() {
 function Intro() {
   return (
     <div>
-      <h1>Mba Ifeanyi</h1>
+      <h1>Mba Ifeanyi Nelson</h1>
       <p>
         Full-stack web developer student at Udemy. When not learning or
         preparing for a course, I like to play board games, to cook (and eat), or to
@@ -64,16 +71,20 @@ function SkillList() {
   return (
     <div className="skill-list">
       {skills.map((skill) => (
-        <Skill skill={skill.skill} color={skill.color} level={skill.level} />
+        // <Skill skill={skill.skill} color={skill.color} level={skill.level} />
+        <div>
+          <Skill { ...skill }  />
+        </div>
       ))}
     </div>
   );
 }
 
-function Skill({ skill, color, level }) {
+function Skill({ skill, color, level, mineral, playing, watchin }) {
   return (
     <div className="skill" style={{ backgroundColor: color }}>
       <span>{skill}</span>
+      <span>{mineral} {playing} {watchin}</span>
       <span>
         {level === "beginner" && "👶"}
         {level === "intermediate" && "👍"}
